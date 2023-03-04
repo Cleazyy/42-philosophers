@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/04 17:31:49 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:34:31 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ typedef struct s_data
 	int		t_sleep;
 	int		nb_meals;
 }	t_data;
+
+/* utils */
+int		print_error(char *str);
 
 #endif

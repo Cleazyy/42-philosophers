@@ -6,7 +6,7 @@
 #    By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 18:13:14 by fluchten          #+#    #+#              #
-#    Updated: 2023/03/04 14:24:17 by fluchten         ###   ########.fr        #
+#    Updated: 2023/03/04 17:34:09 by fluchten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS_DIR = srcs
 OBJS_DIR = objs
 
 SRCS_DIR = srcs
-SRCS =	main.c
+SRCS =	main.c utils.c
 
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.c=%.o})
 
