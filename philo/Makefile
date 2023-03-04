@@ -6,14 +6,15 @@
 #    By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 18:13:14 by fluchten          #+#    #+#              #
-#    Updated: 2023/03/04 17:48:39 by fluchten         ###   ########.fr        #
+#    Updated: 2023/03/04 20:32:53 by fluchten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #${FSANITIZE}
+FSANITIZE = -fsanitize=address -g
 RM = rm -rf
 
 INC_DIR = includes
@@ -21,7 +22,7 @@ SRCS_DIR = srcs
 OBJS_DIR = objs
 
 SRCS_DIR = srcs
-SRCS =	args.c main.c utils.c
+SRCS =	args.c initialization.c main.c utils.c
 
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.c=%.o})
 
