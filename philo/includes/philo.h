@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/04 17:34:31 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:50:52 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHILO_H
 
 # include <stdio.h>
+# include <limits.h>
 # include <pthread.h>
 
 typedef struct s_philo
@@ -31,6 +32,8 @@ typedef struct s_data
 	int		nb_meals;
 }	t_data;
 
+/* args */
+int		parse_args(t_data *data, int ac, char **av);
 /* utils */
 int		print_error(char *str);
 
