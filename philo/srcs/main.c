@@ -6,13 +6,16 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:15:37 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/04 17:27:56 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:29:03 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
+	(void) av;
+	if (ac != 5 && ac != 6)
+		return (1);
 	return (0);
 }
