@@ -6,7 +6,7 @@
 #    By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 18:13:14 by fluchten          #+#    #+#              #
-#    Updated: 2023/03/04 20:32:53 by fluchten         ###   ########.fr        #
+#    Updated: 2023/03/05 22:26:34 by fluchten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,17 @@ SRCS_DIR = srcs
 OBJS_DIR = objs
 
 SRCS_DIR = srcs
-SRCS =	args.c initialization.c main.c utils.c
+SRCS =	args/check_args.c \
+		args/parse_args.c \
+		initialization/init_forks.c \
+		initialization/init_philos.c \
+		initialization/init_threads.c \
+		initialization/initialization.c \
+		philos/philos_actions.c \
+		philos/philos_routines.c \
+		philos/philos_utils.c \
+		utils/utils.c \
+		main.c
 
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.c=%.o})
 

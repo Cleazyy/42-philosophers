@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philos_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 18:15:37 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 22:20:32 by fluchten         ###   ########.fr       */
+/*   Created: 2023/03/05 18:54:50 by fluchten          #+#    #+#             */
+/*   Updated: 2023/03/05 22:19:56 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+void	print_msg(char *str, t_philo *philo)
 {
-	t_data	data;
+	int	time;
 
-	if (ac != 5 && ac != 6)
-		return (print_error("wrong numbers of arguments."));
-	if (!check_args(ac, av))
-		return (print_error("arugments should only contain numbers."));
-	if (!parse_args(&data, ac, av))
-		return (print_error("arguments contain invalid numbers."));
-	if (!initialization(&data))
-		return (print_error("Initilization."));
-	free_everythings(&data);
-	return (0);
+	time = get_time() - philo->data->start_time;
+	pthread_mutex_lock(&philo->data->write);
+	if (ft_strcmp(DIED_MSG, str) == 0 && philo->data->is_dead == 0)
+	{
+		printf("%d %d %s\n", time, philo->id, str);
+		philo->data->is_dead = 1;
+	}
+	if (!philo->data->is_dead)
+		printf("%d %d %s\n", time, philo->id, str);
+	pthread_mutex_unlock(&philo->data->write);
 }

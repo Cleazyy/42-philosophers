@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:33:08 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/04 20:09:25 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/05 22:21:12 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,48 @@ int	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+void	ft_usleep(int time)
+{
+	int	start;
+
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(100);
 }
 
 int	free_everythings(t_data *data)
 {
 	int	i;
 
-	if (data->philos)
-		free(data->philos);
-	if (data->threads)
-		free(data->threads);
 	if (data->forks)
 	{
 		i = 0;
 		while (i < data->nb_philos)
 		{
 			pthread_mutex_destroy(&data->forks[i]);
+			pthread_mutex_destroy(&data->philos[i].lock);
 			i++;
 		}
 		free(data->forks);
 	}
+	if (data->philos)
+		free(data->philos);
+	if (data->tid)
+		free(data->tid);
+	pthread_mutex_destroy(&data->lock);
+	pthread_mutex_destroy(&data->write);
 	return (0);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 != '\0' && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(char *)s1 - *(char *)s2);
 }

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 18:15:37 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 22:20:32 by fluchten         ###   ########.fr       */
+/*   Created: 2023/03/04 18:57:57 by fluchten          #+#    #+#             */
+/*   Updated: 2023/03/05 21:05:40 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+int	initialization(t_data *data)
 {
-	t_data	data;
-
-	if (ac != 5 && ac != 6)
-		return (print_error("wrong numbers of arguments."));
-	if (!check_args(ac, av))
-		return (print_error("arugments should only contain numbers."));
-	if (!parse_args(&data, ac, av))
-		return (print_error("arguments contain invalid numbers."));
-	if (!initialization(&data))
-		return (print_error("Initilization."));
-	free_everythings(&data);
-	return (0);
+	data->is_dead = 0;
+	data->finished = 0;
+	pthread_mutex_init(&data->write, NULL);
+	pthread_mutex_init(&data->lock, NULL);
+	if (!init_forks(data))
+		return (0);
+	if (!init_philos(data))
+		return (0);
+	if (!init_threads(data))
+		return (1);
+	return (1);
 }
