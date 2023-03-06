@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 19:17:50 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:19:36 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void	print_msg(t_philo *philo, int msg);
 int		print_error(char *error);
 int		get_time(void);
 void	ft_usleep(int time);
-int		free_everythings(t_data *data);
+void	free_everythings(t_data *data);
 
 #endif

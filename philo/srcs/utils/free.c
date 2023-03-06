@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:42:56 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 18:45:04 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:19:26 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ static void	destroy_mutexes(t_data *data)
 	}
 }
 
-int	free_everythings(t_data *data)
+void	free_everythings(t_data *data)
 {
 	clear_data(data);
 	destroy_mutexes(data);
-	return (0);
 }
