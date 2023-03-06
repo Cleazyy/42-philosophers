@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 19:15:44 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:17:50 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 # include <limits.h>
 # include <pthread.h>
 # include <sys/time.h>
-
-# define ERR_MALLOC "malloc allocation failed."
-# define ERR_MUTEX "mutex initialization failed"
 
 # define FORKS_MSG "has taken a fork"
 # define EATING_MSG "is eating"
