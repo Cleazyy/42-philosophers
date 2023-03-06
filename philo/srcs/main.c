@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:15:37 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 19:03:15 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:13:15 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac != 5 && ac != 6)
-		return (print_error("wrong numbers of arguments."));
 	if (!check_args(ac, av))
-		return (print_error("arugments should only contain numbers."));
+		return (1);
 	if (!parse_args(&data, ac, av))
-		return (print_error("arguments contain invalid numbers."));
+		return (1);
 	if (!initialization(&data))
 	{
 		free_everythings(&data);

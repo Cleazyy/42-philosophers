@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
+/*   args_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:42:06 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 13:24:59 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:15:35 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	parse_args(t_data *data, int ac, char **av)
 	data->nb_meals = -1;
 	if (data->nb_philos <= 0 || data->t_die <= 0 || data->t_eat <= 0
 		|| data->t_sleep <= 0)
-		return (0);
+		return (print_error("args contain invalid numbers."));
 	if (ac == 6)
 	{
 		data->nb_meals = convert_number(av[5]);
 		if (data->nb_meals <= 0)
-			return (0);
+			return (print_error("args contain invalid numbers."));
 	}
 	return (1);
 }

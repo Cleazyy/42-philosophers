@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 19:01:13 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:15:44 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	*death_monitoring(void *philo_pointer);
 void	*monitoring(void *data_pointer);
 void	print_msg(t_philo *philo, int msg);
 /* utils */
-int		print_error(char *str);
-int		output_error(char *error);
+int		print_error(char *error);
 int		get_time(void);
 void	ft_usleep(int time);
 int		free_everythings(t_data *data);

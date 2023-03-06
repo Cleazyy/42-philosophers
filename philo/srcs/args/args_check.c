@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 13:23:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 13:24:14 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:15:35 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ int	check_args(int ac, char **av)
 {
 	int	i;
 
+	if (ac != 5 && ac != 6)
+		return (print_error("wrong numbers of args."));
 	i = 1;
 	while (i < ac)
 	{
 		if (!str_is_digits(av[i]))
-			return (0);
+			return (print_error("args should only contain digits."));
 		i++;
 	}
 	return (1);
