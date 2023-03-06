@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:04:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 22:25:55 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:36:20 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,26 @@ void	*routine(void *arg)
 	philo = (t_philo *) arg;
 	philo->time_to_die = philo->data->t_die + get_time();
 	if (pthread_create(&philo->t1, NULL, &death_monitoring, (void *)philo))
-		return ((void *)1);
+		return (NULL);
 	while (philo->data->is_dead == 0)
 		execute_actions(philo);
 	if (pthread_join(philo->t1, NULL))
-		return ((void *)1);
-	return ((void *)0);
+		return (NULL);
+	return (NULL);
 }
 
 void	*death_monitoring(void *arg)
 {
 	t_philo	*philo;
+	int		now;
 
 	philo = (t_philo *) arg;
 	while (philo->data->is_dead == 0)
 	{
 		pthread_mutex_lock(&philo->lock);
-		if (get_time() >= philo->time_to_die && philo->eating == 0)
-			print_msg(DIED_MSG, philo);
+		now = get_time();
+		if (now >= philo->time_to_die && philo->eating == 0)
+			print_msg(philo, 5);
 		if (philo->meal_count == philo->data->nb_meals)
 		{
 			pthread_mutex_lock(&philo->data->lock);

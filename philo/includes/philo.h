@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 22:22:46 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:46:18 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define FORKS_MSG "\033[37mhas taken a fork\033[0m"
-# define THINKING_MSG "\033[33mis thinking\033[0m"
-# define SLEEPING_MSG "\033[36mis sleeping\033[0m"
-# define EATING_MSG "\033[32mis eating\033[0m"
-# define DIED_MSG "\033[31mdied\033[0m"
+# define FORKS_MSG "has taken a fork"
+# define EATING_MSG "is eating"
+# define SLEEPING_MSG "is sleeping"
+# define THINKING_MSG "is thinking"
+# define DIED_MSG "died"
 
 typedef struct s_philo
 {
@@ -70,12 +70,11 @@ void	execute_actions(t_philo *philo);
 void	*routine(void *philo_pointer);
 void	*death_monitoring(void *philo_pointer);
 void	*monitoring(void *data_pointer);
-void	print_msg(char *str, t_philo *philo);
+void	print_msg(t_philo *philo, int msg);
 /* utils */
 int		print_error(char *str);
 int		get_time(void);
 void	ft_usleep(int time);
 int		free_everythings(t_data *data);
-int		ft_strcmp(char *s1, char *s2);
 
 #endif

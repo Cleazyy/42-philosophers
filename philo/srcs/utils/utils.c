@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:33:08 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 22:21:12 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:46:14 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,4 @@ int	free_everythings(t_data *data)
 	pthread_mutex_destroy(&data->lock);
 	pthread_mutex_destroy(&data->write);
 	return (0);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 != '\0' && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return (*(char *)s1 - *(char *)s2);
 }
