@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:04:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 09:36:20 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 10:02:49 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	*death_monitoring(void *arg)
 	return (NULL);
 }
 
-void	*monitoring(void *data_pointer)
+void	*monitoring(void *arg)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *) data_pointer;
+	philo = (t_philo *) arg;
 	while (philo->data->is_dead == 0)
 	{
 		pthread_mutex_lock(&philo->lock);
