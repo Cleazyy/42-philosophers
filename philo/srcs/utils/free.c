@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:42:56 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 11:03:19 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:45:04 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	destroy_mutexes(t_data *data)
 {
 	int	i;
 
+	pthread_mutex_destroy(&data->write);
+	pthread_mutex_destroy(&data->lock);
 	i = 0;
 	while (i < data->nb_philos)
 	{
@@ -33,8 +35,6 @@ static void	destroy_mutexes(t_data *data)
 		pthread_mutex_destroy(&data->philos[i].lock);
 		i++;
 	}
-	pthread_mutex_destroy(&data->lock);
-	pthread_mutex_destroy(&data->write);
 }
 
 int	free_everythings(t_data *data)

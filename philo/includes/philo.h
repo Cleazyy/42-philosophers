@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 09:46:18 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:01:13 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <limits.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+# define ERR_MALLOC "malloc allocation failed."
+# define ERR_MUTEX "mutex initialization failed"
 
 # define FORKS_MSG "has taken a fork"
 # define EATING_MSG "is eating"
@@ -61,7 +64,7 @@ typedef struct s_data
 int		check_args(int ac, char **av);
 int		parse_args(t_data *data, int ac, char **av);
 /* initialization */
-int		init_forks(t_data *data);
+int		init_mutexes(t_data *data);
 int		init_philos(t_data *data);
 int		init_threads(t_data *data);
 int		initialization(t_data *data);
@@ -73,6 +76,7 @@ void	*monitoring(void *data_pointer);
 void	print_msg(t_philo *philo, int msg);
 /* utils */
 int		print_error(char *str);
+int		output_error(char *error);
 int		get_time(void);
 void	ft_usleep(int time);
 int		free_everythings(t_data *data);

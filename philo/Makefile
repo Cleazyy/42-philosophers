@@ -6,7 +6,7 @@
 #    By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 18:13:14 by fluchten          #+#    #+#              #
-#    Updated: 2023/03/06 10:50:44 by fluchten         ###   ########.fr        #
+#    Updated: 2023/03/06 18:37:06 by fluchten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJS_DIR = objs
 SRCS_DIR = srcs
 SRCS =	args/check_args.c \
 		args/parse_args.c \
-		initialization/init_forks.c \
+		initialization/init_mutexes.c \
 		initialization/init_philos.c \
 		initialization/init_threads.c \
 		initialization/initialization.c \

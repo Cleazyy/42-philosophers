@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:33:08 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 10:43:21 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:50:28 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	print_error(char *str)
 {
 	printf("Error: %s\n", str);
 	return (1);
+}
+
+int	output_error(char *error)
+{
+	printf("Error: %s\n", error);
+	return (0);
 }
 
 int	get_time(void)
