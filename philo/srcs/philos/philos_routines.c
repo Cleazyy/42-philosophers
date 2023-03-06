@@ -6,13 +6,13 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:04:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 22:16:08 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:19:28 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*philo;
 

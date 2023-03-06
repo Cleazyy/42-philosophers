@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:46:06 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 21:58:50 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:19:28 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	init_threads(t_data *data)
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		if (pthread_create(&data->tid[i], NULL, &philo_routine, &data->philo[i]))
+		if (pthread_create(&data->tid[i], NULL, &routine, &data->philo[i]))
 			return (print_error("pthread_create() failed."));
 		ft_usleep(1);
 		i++;
