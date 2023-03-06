@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:15:37 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/05 22:20:32 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 13:47:55 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	if (!parse_args(&data, ac, av))
 		return (print_error("arguments contain invalid numbers."));
 	if (!initialization(&data))
-		return (print_error("Initilization."));
+		return (print_error("initilization."));
 	free_everythings(&data);
 	return (0);
 }
