@@ -6,62 +6,40 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:04:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 10:02:49 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:16:08 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*routine(void *arg)
+void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *) arg;
-	philo->time_to_die = philo->data->t_die + get_time();
-	if (pthread_create(&philo->t1, NULL, &death_monitoring, (void *)philo))
-		return (NULL);
-	while (philo->data->is_dead == 0)
-		execute_actions(philo);
-	if (pthread_join(philo->t1, NULL))
-		return (NULL);
+	if (philo->data->is_dead == 0)
+		actions_loop(philo);
 	return (NULL);
 }
 
-void	*death_monitoring(void *arg)
+void	death_monitoring(t_data *data)
 {
-	t_philo	*philo;
-	int		now;
+	int	i;
 
-	philo = (t_philo *) arg;
-	while (philo->data->is_dead == 0)
+	while (data->is_dead == 0)
 	{
-		pthread_mutex_lock(&philo->lock);
-		now = get_time();
-		if (now >= philo->time_to_die && philo->eating == 0)
-			print_msg(philo, 5);
-		if (philo->meal_count == philo->data->nb_meals)
+		i = 0;
+		while (i < data->nb_philos)
 		{
-			pthread_mutex_lock(&philo->data->lock);
-			philo->data->finished++;
-			philo->meal_count++;
-			pthread_mutex_unlock(&philo->data->lock);
+			if (get_time() >= data->philo[i].last_meal + data->t_die)
+			{
+				print_msg(data->philo, 5);
+				pthread_mutex_lock(&data->lock);
+				data->is_dead = 1;
+				pthread_mutex_unlock(&data->lock);
+				break ;
+			}
+			i++;
 		}
-		pthread_mutex_unlock(&philo->lock);
 	}
-	return (NULL);
-}
-
-void	*monitoring(void *arg)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *) arg;
-	while (philo->data->is_dead == 0)
-	{
-		pthread_mutex_lock(&philo->lock);
-		if (philo->data->finished >= philo->data->nb_philos)
-			philo->data->is_dead = 1;
-		pthread_mutex_unlock(&philo->lock);
-	}
-	return (NULL);
 }

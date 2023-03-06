@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 19:19:36 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:56:58 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,18 @@ typedef struct s_philo
 	int				meal_count;
 	int				status;
 	int				eating;
-	int				time_to_die;
+	int				last_meal;
 	pthread_mutex_t	lock;
 }	t_philo;
 
 typedef struct s_data
 {
+	t_philo			*philo;
 	pthread_t		*tid;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	lock;
+	pthread_mutex_t	write;
 	int				nb_philos;
-	t_philo			*philos;
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
@@ -52,9 +55,6 @@ typedef struct s_data
 	int				start_time;
 	int				is_dead;
 	int				finished;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	lock;
-	pthread_mutex_t	write;
 }	t_data;
 
 /* args */
@@ -66,10 +66,9 @@ int		init_philos(t_data *data);
 int		init_threads(t_data *data);
 int		initialization(t_data *data);
 /* philos */
-void	execute_actions(t_philo *philo);
-void	*routine(void *philo_pointer);
-void	*death_monitoring(void *philo_pointer);
-void	*monitoring(void *data_pointer);
+void	actions_loop(t_philo *philo);
+void	*philo_routine(void *philo_pointer);
+void	death_monitoring(t_data *data);
 void	print_msg(t_philo *philo, int msg);
 /* utils */
 int		print_error(char *error);

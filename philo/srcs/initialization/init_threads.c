@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:46:06 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 13:48:46 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:58:50 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,17 @@
 
 int	init_threads(t_data *data)
 {
-	int			i;
-	pthread_t	t0;
+	int	i;
 
 	data->tid = malloc(sizeof(pthread_t) * data->nb_philos);
 	if (!data->tid)
-		return (0);
-	data->start_time = get_time();
-	if (data->nb_meals > 0)
-	{
-		if (pthread_create(&t0, NULL, &monitoring, &data->philos[0]))
-			return (0);
-	}
+		return (print_error("malloc() failed."));
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]))
-			return (0);
+		if (pthread_create(&data->tid[i], NULL, &philo_routine, &data->philo[i]))
+			return (print_error("pthread_create() failed."));
 		ft_usleep(1);
-		i++;
-	}
-	i = 0;
-	while (i < data->nb_philos)
-	{
-		if (pthread_join(data->tid[i], NULL))
-			return (0);
 		i++;
 	}
 	return (1);
