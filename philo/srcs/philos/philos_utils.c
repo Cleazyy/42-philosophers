@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:54:50 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 21:44:03 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 07:27:10 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	print_msg(t_philo *philo, int msg)
 	if (philo->data->is_dead == 0)
 	{
 		if (msg == 1)
-			printf("\033[37m%d %d %s\033[0m\n", time, philo->id, FORKS_MSG);
+			printf("\033[37m%d %d %s\033[0m\n", time, philo->id, MSG_FORK);
 		if (msg == 2)
-			printf("\033[32m%d %d %s\033[0m\n", time, philo->id, EATING_MSG);
+			printf("\033[32m%d %d %s\033[0m\n", time, philo->id, MSG_EATING);
 		if (msg == 3)
-			printf("\033[36m%d %d %s\033[0m\n", time, philo->id, SLEEPING_MSG);
+			printf("\033[36m%d %d %s\033[0m\n", time, philo->id, MSG_SLEEPING);
 		if (msg == 4)
-			printf("\033[33m%d %d %s\033[0m\n", time, philo->id, THINKING_MSG);
+			printf("\033[33m%d %d %s\033[0m\n", time, philo->id, MSG_THINKING);
 		if (msg == 5)
-			printf("\033[31m%d %d %s\033[0m\n", time, philo->id, DIED_MSG);
+			printf("\033[31m%d %d %s\033[0m\n", time, philo->id, MSG_DIED);
 	}
 	pthread_mutex_unlock(&philo->data->write);
 }

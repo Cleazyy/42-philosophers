@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:57:57 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 22:17:54 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 07:24:46 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	initialization(t_data *data)
 {
 	data->start_time = get_time();
 	data->is_dead = 0;
-	data->finished = 0;
 	if (!init_mutexes(data))
 		return (0);
 	if (!init_philos(data))

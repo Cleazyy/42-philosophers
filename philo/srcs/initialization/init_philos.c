@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 13:58:01 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 21:56:54 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 07:22:26 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ int	init_philos(t_data *data)
 			data->philo[i].right_fork = &data->fork[data->nb_philos - 1];
 		data->philo[i].meal_count = 0;
 		data->philo[i].last_meal = data->start_time;
-		data->philo[i].eating = 0;
-		data->philo[i].status = 0;
-		if (pthread_mutex_init(&data->philo[i].lock, NULL))
-			return (print_error("pthread_mutex_init() failed"));
 		i++;
 	}
 	return (1);

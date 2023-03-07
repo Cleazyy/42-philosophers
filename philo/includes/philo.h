@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 22:19:28 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 07:27:10 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,25 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define FORKS_MSG "has taken a fork"
-# define EATING_MSG "is eating"
-# define SLEEPING_MSG "is sleeping"
-# define THINKING_MSG "is thinking"
-# define DIED_MSG "died"
+# define MSG_FORK "has taken a fork"
+# define MSG_EATING "is eating"
+# define MSG_SLEEPING "is sleeping"
+# define MSG_THINKING "is thinking"
+# define MSG_DIED "died"
 
 typedef struct s_philo
 {
 	struct s_data	*data;
-	pthread_t		t1;
 	int				id;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	int				meal_count;
-	int				status;
-	int				eating;
 	int				last_meal;
-	pthread_mutex_t	lock;
 }	t_philo;
 
 typedef struct s_data
 {
 	t_philo			*philo;
-	pthread_t		*tid;
-	pthread_mutex_t	*fork;
-	pthread_mutex_t	lock;
-	pthread_mutex_t	write;
 	int				nb_philos;
 	int				t_die;
 	int				t_eat;
@@ -54,7 +46,10 @@ typedef struct s_data
 	int				nb_meals;
 	int				start_time;
 	int				is_dead;
-	int				finished;
+	pthread_t		*tid;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	lock;
+	pthread_mutex_t	write;
 }	t_data;
 
 /* args */
