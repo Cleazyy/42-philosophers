@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:42:56 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 07:21:17 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:19:31 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static int	destroy_mutexes(t_data *data)
 	while (i < data->nb_philos)
 	{
 		if (pthread_mutex_destroy(&data->fork[i]))
-			return (print_error("pthread_mutex_destroy() failed."));
+			return (print_error("pthread_mutex_destroy() fork failed."));
 		i++;
 	}
 	if (pthread_mutex_destroy(&data->write))
-		return (print_error("pthread_mutex_destroy() failed."));
+		return (print_error("pthread_mutex_destroy() write failed."));
 	if (pthread_mutex_destroy(&data->lock))
-		return (print_error("pthread_mutex_destroy() failed."));
+		return (print_error("pthread_mutex_destroy() lock failed."));
 	return (0);
 }
 
@@ -48,7 +48,7 @@ static int	destroy_threads(t_data *data)
 	while (i < data->nb_philos)
 	{
 		if (pthread_join(data->tid[i], NULL))
-			return (print_error("pthread_join() failed."));
+			return (print_error("pthread_join() tid failed."));
 		i++;
 	}
 	return (0);
