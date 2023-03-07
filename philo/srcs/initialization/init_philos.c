@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 13:58:01 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 07:22:26 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:32:25 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_philos(t_data *data)
 
 	data->philo = malloc(sizeof(t_philo) * data->nb_philos);
 	if (!data->philo)
-		return (print_error("malloc() failed."));
+		return (print_error("malloc() philo failed."));
 	i = 0;
 	while (i < data->nb_philos)
 	{
