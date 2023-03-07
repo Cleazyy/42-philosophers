@@ -6,15 +6,16 @@
 #    By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 18:13:14 by fluchten          #+#    #+#              #
-#    Updated: 2023/03/06 19:13:44 by fluchten         ###   ########.fr        #
+#    Updated: 2023/03/07 19:24:28 by fluchten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror ${FSANITIZE}
-FSANITIZE = -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror ${FSANI_ADDRESS}
+FSANI_ADDRESS = -fsanitize=address -g
+FSANI_THREAD = -fsanitize=thread -g
 RM = rm -rf
 
 INC_DIR = includes
@@ -29,6 +30,7 @@ SRCS =	args/args_check.c \
 		initialization/init_threads.c \
 		initialization/initialization.c \
 		philos/philos_actions.c \
+		philos/philos_monitoring.c \
 		philos/philos_routines.c \
 		philos/philos_utils.c \
 		utils/free.c \

@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 07:27:10 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:22:00 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int		init_threads(t_data *data);
 int		initialization(t_data *data);
 /* philos */
 void	actions_loop(t_philo *philo);
-void	*routine(void *philo_pointer);
 void	death_monitoring(t_data *data);
+void	*routine(void *philo_pointer);
 void	print_msg(t_philo *philo, int msg);
 /* utils */
 int		print_error(char *error);
