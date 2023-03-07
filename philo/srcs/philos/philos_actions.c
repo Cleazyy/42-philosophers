@@ -6,16 +6,21 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 12:36:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 07:23:37 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:01:15 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	take_forks(t_philo *philo)
+static void	take_forks(t_philo *philo, int *is_alone)
 {
 	pthread_mutex_lock(philo->right_fork);
 	print_msg(philo, 1);
+	if (*is_alone)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		return ;
+	}
 	pthread_mutex_lock(philo->left_fork);
 	print_msg(philo, 1);
 }
@@ -47,9 +52,14 @@ static void	think(t_philo *philo)
 
 void	actions_loop(t_philo *philo)
 {
+	int	is_alone;
+
+	is_alone = 0;
+	if (philo->data->nb_philos == 1)
+		is_alone = 1;
 	while (philo->data->is_dead == 0)
 	{
-		take_forks(philo);
+		take_forks(philo, &is_alone);
 		eat(philo);
 		drop_forks(philo);
 		think(philo);
