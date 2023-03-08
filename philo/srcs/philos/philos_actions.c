@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 12:36:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/08 15:19:09 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:59:43 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	eat(t_philo *philo)
 {
 	print_msg(philo, 2);
 	pthread_mutex_lock(&philo->data->lock);
-	philo->last_meal = get_time();
+	philo->time_last_meal = get_time();
 	pthread_mutex_unlock(&philo->data->lock);
 	ft_usleep(philo->data->time_to_eat);
 }

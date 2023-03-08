@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/08 15:19:09 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:01:40 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef struct s_philo
 {
 	struct s_data	*data;
 	int				id;
-	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	int				time_last_meal;
 	int				meal_count;
-	int				last_meal;
 }	t_philo;
 
 typedef struct s_data
