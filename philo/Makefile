@@ -6,7 +6,7 @@
 #    By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 18:13:14 by fluchten          #+#    #+#              #
-#    Updated: 2023/03/07 19:24:28 by fluchten         ###   ########.fr        #
+#    Updated: 2023/03/08 14:38:27 by fluchten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS =	args/args_check.c \
 		initialization/init_mutexes.c \
 		initialization/init_philos.c \
 		initialization/init_threads.c \
-		initialization/initialization.c \
+		initialization/init_simulation.c \
 		philos/philos_actions.c \
 		philos/philos_monitoring.c \
 		philos/philos_routines.c \

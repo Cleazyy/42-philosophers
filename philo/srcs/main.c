@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:15:37 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 21:57:54 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:38:18 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (!parse_args(&data, ac, av))
 		return (1);
-	if (!initialization(&data))
+	if (!init_simulation(&data))
 	{
 		free_everythings(&data);
 		return (1);
