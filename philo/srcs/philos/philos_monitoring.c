@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:21:20 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 19:27:25 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:18:52 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	check_last_meal(t_data *data)
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		if (get_time() >= data->philo[i].last_meal + data->t_die)
+		if (get_time() >= data->philo[i].last_meal + data->time_to_die)
 		{
 			print_msg(data->philo, 5);
 			pthread_mutex_lock(&data->lock);

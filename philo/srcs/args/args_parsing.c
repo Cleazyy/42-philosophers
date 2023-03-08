@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:42:06 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/06 19:15:35 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:19:09 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ static int	convert_number(const char *str)
 int	parse_args(t_data *data, int ac, char **av)
 {
 	data->nb_philos = convert_number(av[1]);
-	data->t_die = convert_number(av[2]);
-	data->t_eat = convert_number(av[3]);
-	data->t_sleep = convert_number(av[4]);
+	data->time_to_die = convert_number(av[2]);
+	data->time_to_eat = convert_number(av[3]);
+	data->time_to_sleep = convert_number(av[4]);
 	data->nb_meals = -1;
-	if (data->nb_philos <= 0 || data->t_die <= 0 || data->t_eat <= 0
-		|| data->t_sleep <= 0)
+	if (data->nb_philos <= 0 || data->time_to_die <= 0 || data->time_to_eat <= 0
+		|| data->time_to_sleep <= 0)
 		return (print_error("args contain invalid numbers."));
 	if (ac == 6)
 	{

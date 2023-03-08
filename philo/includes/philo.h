@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:17:30 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/08 14:38:21 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:19:09 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ typedef struct s_data
 {
 	t_philo			*philo;
 	int				nb_philos;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
 	int				nb_meals;
 	int				start_time;
 	int				is_dead;
