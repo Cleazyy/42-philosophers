@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:21:20 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/08 15:18:52 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:57:42 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	death_monitoring(t_data *data)
 	{
 		check_last_meal(data);
 		if (data->nb_meals == -1)
-			return ;
+			continue ;
 		check_nb_meals(data);
 	}
 }
