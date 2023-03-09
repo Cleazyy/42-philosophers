@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 12:36:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/09 16:27:02 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:07:05 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static void	drop_forks(t_philo *philo)
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->data->lock);
 	print_msg(philo, 3);
+	ft_usleep(philo->data->time_to_sleep);
 }
 
 static void	think(t_philo *philo)
 {
-	ft_usleep(philo->data->time_to_sleep);
 	print_msg(philo, 4);
 }
 
