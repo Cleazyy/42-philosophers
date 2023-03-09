@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:04:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 19:21:39 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:41:29 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	*routine(void *arg)
 {
 	t_philo	*philo;
+	int		is_dead;
 
 	philo = (t_philo *) arg;
-	if (philo->data->is_dead == 0)
+	pthread_mutex_lock(&philo->data->lock);
+	is_dead = philo->data->is_dead;
+	pthread_mutex_unlock(&philo->data->lock);
+	if (!is_dead)
 		actions_loop(philo);
 	return (NULL);
 }

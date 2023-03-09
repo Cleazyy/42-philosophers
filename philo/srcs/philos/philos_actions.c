@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 12:36:48 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/08 18:59:43 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:27:02 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ static void	think(t_philo *philo)
 
 void	actions_loop(t_philo *philo)
 {
-	while (philo->data->is_dead == 0)
+	int	is_dead;
+
+	pthread_mutex_lock(&philo->data->lock);
+	is_dead = philo->data->is_dead;
+	pthread_mutex_unlock(&philo->data->lock);
+	while (!is_dead)
 	{
 		take_forks(philo);
 		if (philo->data->nb_philos == 1)
@@ -60,5 +65,8 @@ void	actions_loop(t_philo *philo)
 		eat(philo);
 		drop_forks(philo);
 		think(philo);
+		pthread_mutex_lock(&philo->data->lock);
+		is_dead = philo->data->is_dead;
+		pthread_mutex_unlock(&philo->data->lock);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:54:50 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 07:27:10 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:40:30 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void	print_msg(t_philo *philo, int msg)
 {
+	int	is_dead;
 	int	time;
 
-	pthread_mutex_lock(&philo->data->write);
 	time = get_time() - philo->data->start_time;
-	if (philo->data->is_dead == 0)
+	pthread_mutex_lock(&philo->data->write);
+	pthread_mutex_lock(&philo->data->lock);
+	is_dead = philo->data->is_dead;
+	pthread_mutex_unlock(&philo->data->lock);
+	if (!is_dead)
 	{
 		if (msg == 1)
 			printf("\033[37m%d %d %s\033[0m\n", time, philo->id, MSG_FORK);
