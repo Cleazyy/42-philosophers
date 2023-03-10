@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:42:06 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/08 15:19:09 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:10:26 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	convert_number(const char *str)
 	{
 		res = res * 10 + (str[i] - 48);
 		if (res < INT_MIN || res > INT_MAX)
-			return (0);
+			return (-1);
 		i++;
 	}
 	return ((int) res);
