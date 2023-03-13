@@ -6,7 +6,7 @@
 /*   By: fluchten <fluchten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:42:56 by fluchten          #+#    #+#             */
-/*   Updated: 2023/03/07 18:19:31 by fluchten         ###   ########.fr       */
+/*   Updated: 2023/03/13 08:06:30 by fluchten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	destroy_mutexes(t_data *data)
 	return (0);
 }
 
-static int	destroy_threads(t_data *data)
+static int	join_threads(t_data *data)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ static int	destroy_threads(t_data *data)
 
 void	free_everythings(t_data *data)
 {
-	destroy_threads(data);
+	join_threads(data);
 	destroy_mutexes(data);
 	clear_data(data);
 }
